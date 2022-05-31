@@ -10,14 +10,14 @@ ofn.local
 [lexi]
 local_lexi ansible_host=10.10.100.10 ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=ERROR'
 
-[travis]
-local_travis
+[test]
+local_test
 
 [local:children]
 vagrant
 lxc
 lexi
-travis
+test
 
 #------------------------------------------------------------------------------
 # Australia
@@ -49,7 +49,7 @@ br-staging
 # Colombia
 
 [co-prod]
-openfoodcolombia.org
+openfoodcolombia.org ansible_host=5.161.72.75
 
 [co:children]
 co-prod
@@ -64,6 +64,23 @@ openfoodnetwork.ca ansible_host=68.183.204.127
 ca-prod
 
 #------------------------------------------------------------------------------
+# Costa Rica
+
+[cr-prod]
+laferia.cr ansible_host=95.217.177.232
+
+[cr:children]
+cr-prod
+
+#------------------------------------------------------------------------------
+# Hungary
+[hu-prod]
+openfoodnetwork.hu ansible_host=157.230.107.51
+
+[hu:children]
+hu-prod
+
+#------------------------------------------------------------------------------
 ## Ireland
 
 [ie-prod]
@@ -76,7 +93,7 @@ ie-prod
 # India
 
 [in-prod]
-www.openfoodnetwork.in
+openfoodnetwork.in
 
 [in:children]
 in-prod
@@ -98,7 +115,7 @@ it-staging
 # UK
 
 [uk-prod]
-www.openfoodnetwork.org.uk
+openfoodnetwork.org.uk
 
 [uk-staging]
 staging.openfoodnetwork.org.uk
@@ -110,6 +127,7 @@ staging2.openfoodnetwork.org.uk
 uk-prod
 uk-staging
 uk-staging2
+
 
 #------------------------------------------------------------------------------
 # USA
@@ -126,18 +144,14 @@ us-prod
 [es-prod]
 app.katuma.org ansible_host=116.203.60.113
 
-[es-staging]
-staging.katuma.org ansible_host=51.15.216.10
-
 [es:children]
 es-prod
-es-staging
 
 #------------------------------------------------------------------------------
 # France
 
 [fr-prod]
-www.coopcircuits.fr ansible_host=51.68.226.206
+coopcircuits.fr ansible_host=51.68.226.206
 
 [fr-staging]
 staging.coopcircuits.fr ansible_host=51.178.24.33
@@ -159,7 +173,7 @@ de-prod
 # Belgium
 
 [be-prod]
-www.openfoodnetwork.be ansible_host=51.75.124.147
+openfoodnetwork.be ansible_host=51.75.124.147
 
 [be:children]
 be-prod
@@ -168,7 +182,7 @@ be-prod
 # South Africa
 
 [za-prod]
-www.openfoodnetwork.org.za
+openfoodnetwork.org.za
 
 [za:children]
 za-prod
@@ -182,6 +196,8 @@ es-prod
 fr-prod
 uk-prod
 de-prod
+ie-prod
+hu-prod
 
 #------------------------------------------------------------------------------
 # America
@@ -205,7 +221,6 @@ au-prod
 au-staging
 uk-staging
 fr-staging
-es-staging
 
 #------------------------------------------------------------------------------
 # All
@@ -226,3 +241,5 @@ be
 za
 br
 co
+cr
+hu
